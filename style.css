@@ -1,6 +1,6 @@
 :root {
-    /* Paleta Clean / Minimalista */
-    --primary: #4A90E2; 
+    /* Paleta Vermelha */
+    --primary: #E30613; 
     --bg-color: #FFFFFF;
     --text-dark: #2C3E50;
     --text-light: #000000;
@@ -10,7 +10,7 @@
 
 body {
     font-family: 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
-    background-color: #F4F6F7; /* Fundo da página mais suave */
+    background-color: #F4F6F7;
     margin: 0;
     padding: 40px 20px;
     display: flex;
@@ -130,14 +130,14 @@ body {
 .camera-view { background: #111; height: 100%; display: flex; flex-direction: column; align-items: center; justify-content: center; position: relative; color: white; }
 .scanner-frame { width: 200px; height: 200px; border: 2px solid var(--primary); border-radius: 16px; margin-bottom: 20px; box-shadow: 0 0 0 9999px rgba(0, 0, 0, 0.8); }
 
-.shake-screen { background: linear-gradient(135deg, #4A90E2, #85C1E9); color: white; justify-content: center; align-items: center; text-align: center; }
+.shake-screen { background: linear-gradient(135deg, var(--primary), #FF6B6B); color: white; justify-content: center; align-items: center; text-align: center; }
 .gift-box { width: 120px; height: 120px; background: rgba(255,255,255,0.15); border: 3px solid rgba(255,255,255,0.6); border-radius: 20px; margin-bottom: 30px; display: flex; align-items: center; justify-content: center; font-size: 3rem; box-shadow: 0 8px 16px rgba(0,0,0,0.1); }
 
 .profile-pic { width: 80px; height: 80px; background: #F4F6F7; border: 1px solid var(--border); border-radius: 50%; margin: 0 auto 15px; display: flex; align-items: center; justify-content: center; font-size: 2rem; color: #BDC3C7;}
 .photo-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 5px; margin-top: 15px; }
 .photo-item { aspect-ratio: 1; background: #EAEDED; border-radius: 8px; }
 
-.fab { position: absolute; bottom: 85px; right: 20px; width: 56px; height: 56px; background: var(--primary); color: white; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 1.8rem; box-shadow: 0 4px 12px rgba(74, 144, 226, 0.4); z-index: 10; font-weight: 300;}
+.fab { position: absolute; bottom: 85px; right: 20px; width: 56px; height: 56px; background: var(--primary); color: white; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 1.8rem; box-shadow: 0 4px 12px rgba(227, 6, 19, 0.4); z-index: 10; font-weight: 300;}
 
 /* --- ESTILOS CONVERTIDOS DO REACT NATIVE (TELA 7) --- */
 .rn-container { flex: 1; background-color: var(--bg-color); display: flex; flex-direction: column; overflow: hidden; border-radius: 24px; }
@@ -168,7 +168,7 @@ body {
 .rn-tag { background-color: #F0F3F4; padding: 6px 12px; border-radius: 20px; margin-right: 8px; margin-bottom: 8px; }
 .rn-tag-bad { background-color: #FDEDEC; }
 .rn-tag-text { color: var(--text-dark); font-size: 10px; font-weight: 600; }
-.rn-tag-bad .rn-tag-text { color: #E74C3C; }
+.rn-tag-bad .rn-tag-text { color: #8E1F1F; /* Tom mais escuro para combinar com a paleta */ }
 
 .rn-footer { display: flex; flex-direction: row; height: 70px; background-color: #FFFFFF; border-top: 1px solid var(--border); align-items: center; padding-bottom: 10px; justify-content: space-around; flex-shrink: 0; }
 .rn-footer-item { display: flex; flex-direction: column; align-items: center; justify-content: center; cursor: pointer; }
