@@ -1,0 +1,620 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script type="module" src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.esm.js"></script>
+    <title>Wireframes Completos - ShakeIT (Clean)</title>
+    <style>
+        :root {
+            /* Paleta Clean / Minimalista */
+            --primary: #4A90E2; 
+            --bg-color: #FFFFFF;
+            --text-dark: #2C3E50;
+            --text-light: #000000;
+            --border: #F0F3F4;
+            --input-bg: #F8F9F9;
+        }
+        
+        body {
+            font-family: 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
+            background-color: #F4F6F7; /* Fundo da página mais suave */
+            margin: 0;
+            padding: 40px 20px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+
+        /* Cabeçalho do Documento */
+        .doc-header {
+            background: white;
+            padding: 30px;
+            border-radius: 12px;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.02);
+            max-width: 900px;
+            width: 100%;
+            text-align: center;
+            margin-bottom: 50px;
+            border-top: 4px solid var(--primary);
+        }
+
+        .doc-header h1 { font-size: 1.5rem; margin: 0 0 10px 0; color: var(--text-dark); }
+        .doc-header h2 { font-size: 1.2rem; margin: 0 0 5px 0; font-weight: normal; color: var(--text-light); }
+        .doc-header h3 { font-size: 1.8rem; margin: 20px 0 5px 0; color: var(--primary); }
+        .doc-header p { margin: 5px 0; color: var(--text-light); }
+
+        /* Container Principal */
+        .wireframes-container {
+            display: flex;
+            gap: 40px;
+            flex-wrap: wrap;
+            justify-content: center;
+            max-width: 1400px;
+        }
+
+        /* Wrapper da Tela (Título + Celular) */
+        .screen-wrapper {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 15px;
+        }
+
+        .screen-title {
+            background: white;
+            padding: 8px 16px;
+            border-radius: 20px;
+            font-weight: bold;
+            color: var(--text-dark);
+            font-size: 0.9rem;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.03);
+            border-bottom: 2px solid var(--primary);
+            text-align: center;
+            max-width: 300px;
+        }
+
+        /* Estrutura do Celular */
+        .phone {
+            width: 320px;
+            height: 650px;
+            background: var(--bg-color);
+            border: 10px solid #000000; 
+            border-radius: 40px;
+            position: relative;
+            overflow: hidden;
+            box-shadow: 0 12px 24px rgba(0,0,0,0.06);
+            display: flex;
+            flex-direction: column;
+        }
+
+        .notch {
+            position: absolute;
+            top: 0;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 120px;
+            height: 25px;
+            background: #D5DBDB;
+            border-bottom-left-radius: 15px;
+            border-bottom-right-radius: 15px;
+            z-index: 10;
+        }
+
+        /* Componentes Comuns */
+        .app-header {
+            background: white;
+            padding: 40px 20px 15px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            z-index: 2;
+            border-bottom: 1px solid var(--border);
+        }
+
+        .app-header h4 { margin: 0; font-size: 1.1rem; text-align: center; flex-grow: 1; color: var(--text-dark); font-weight: 600;}
+        
+        .content { padding: 20px; flex-grow: 1; overflow-y: auto; display: flex; flex-direction: column; }
+        
+        .card { background: white; border-radius: 12px; padding: 15px; margin-bottom: 15px; border: 1px solid var(--border); box-shadow: 0 1px 3px rgba(0,0,0,0.01); }
+        .card h5 { margin: 0 0 10px 0; font-size: 1.1rem; color: var(--text-dark); font-weight: 600; }
+        .card p { margin: 0 0 15px 0; font-size: 0.85rem; color: var(--text-light); }
+        
+        .btn { display: block; width: 100%; padding: 14px 0; background: var(--primary); color: white; text-align: center; border-radius: 10px; text-decoration: none; font-weight: 600; border: none; cursor: pointer; margin-top: auto; font-size: 0.95rem; transition: 0.2s;}
+        .btn-outline { background: transparent; color: var(--primary); border: 1.5px solid var(--primary); }
+        .btn-secondary { background: #BDC3C7; color: white; }
+        
+        .input-field { width: 100%; padding: 14px; margin-bottom: 15px; border: 1px solid var(--border); border-radius: 10px; background: var(--input-bg); box-sizing: border-box; font-family: inherit; color: var(--text-dark); font-size: 0.95rem;}
+        .input-field::placeholder { color: #BDC3C7; }
+
+        /* Navegação Inferior */
+        .bottom-nav { background: white; border-top: 1px solid var(--border); padding: 15px 20px 25px; display: flex; justify-content: space-between; z-index: 2; }
+        .nav-item { width: 24px; height: 24px; background: #EAEDED; border-radius: 6px; }
+
+        /* Estilos Específicos das Telas */
+        .login-screen { justify-content: center; align-items: center; background: white; }
+        .logo-text { font-size: 2.5rem; font-weight: 900; color: var(--primary); margin-bottom: 40px; letter-spacing: -1px; }
+
+        .camera-view { background: #111; height: 100%; display: flex; flex-direction: column; align-items: center; justify-content: center; position: relative; color: white; }
+        .scanner-frame { width: 200px; height: 200px; border: 2px solid var(--primary); border-radius: 16px; margin-bottom: 20px; box-shadow: 0 0 0 9999px rgba(0, 0, 0, 0.8); }
+
+        .shake-screen { background: linear-gradient(135deg, #4A90E2, #85C1E9); color: white; justify-content: center; align-items: center; text-align: center; }
+        .gift-box { width: 120px; height: 120px; background: rgba(255,255,255,0.15); border: 3px solid rgba(255,255,255,0.6); border-radius: 20px; margin-bottom: 30px; display: flex; align-items: center; justify-content: center; font-size: 3rem; box-shadow: 0 8px 16px rgba(0,0,0,0.1); }
+
+        .profile-pic { width: 80px; height: 80px; background: #F4F6F7; border: 1px solid var(--border); border-radius: 50%; margin: 0 auto 15px; display: flex; align-items: center; justify-content: center; font-size: 2rem; color: #BDC3C7;}
+        .photo-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 5px; margin-top: 15px; }
+        .photo-item { aspect-ratio: 1; background: #EAEDED; border-radius: 8px; }
+        
+        .fab { position: absolute; bottom: 85px; right: 20px; width: 56px; height: 56px; background: var(--primary); color: white; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 1.8rem; box-shadow: 0 4px 12px rgba(74, 144, 226, 0.4); z-index: 10; font-weight: 300;}
+
+        /* --- ESTILOS CONVERTIDOS DO REACT NATIVE (TELA 7) --- */
+        .rn-container { flex: 1; background-color: var(--bg-color); display: flex; flex-direction: column; overflow: hidden; border-radius: 24px; }
+        .rn-logo-container { text-align: center; margin-top: 50px; margin-bottom: 20px; }
+        .rn-logo-text { font-size: 20px; font-weight: 900; letter-spacing: 4px; color: var(--text-dark); }
+        .rn-logo-highlight { color: #BDC3C7; }
+
+        .rn-header { display: flex; flex-direction: row; align-items: center; padding: 0 30px; margin-bottom: 30px; }
+        .rn-avatar-circle { width: 60px; height: 60px; border-radius: 30px; background-color: #F8F9F9; display: flex; justify-content: center; align-items: center; border: 1px solid var(--border); }
+        .rn-name-container { margin-left: 15px; }
+        .rn-profile-name { font-size: 18px; font-weight: 700; color: var(--text-dark); margin: 0; line-height: 1.2; }
+        .rn-profile-role { font-size: 11px; color: var(--text-light); font-weight: 600; text-transform: uppercase; letter-spacing: 1px; margin: 0; margin-top: 2px;}
+
+        .rn-body { padding: 0 20px; flex-grow: 1; overflow-y: auto; padding-bottom: 20px; }
+        .rn-card { background-color: #FFFFFF; border-radius: 16px; padding: 20px; margin-bottom: 16px; border: 1px solid var(--border); box-shadow: 0 1px 2px rgba(0,0,0,0.02);}
+        .rn-card-title { font-size: 14px; font-weight: 700; margin-bottom: 15px; color: var(--text-dark); text-transform: uppercase; letter-spacing: 0.5px;}
+
+        .rn-measurements-grid { display: flex; flex-direction: row; flex-wrap: wrap; justify-content: space-between; }
+        .rn-measure-item { width: 47%; background-color: #F8F9F9; border-radius: 10px; padding: 12px; display: flex; flex-direction: column; align-items: center; margin-bottom: 10px; border: 1px solid var(--border); box-sizing: border-box; }
+        .rn-measure-label { font-size: 11px; font-weight: 600; color: var(--text-light); margin-top: 5px; }
+
+        .rn-pref-section { margin-bottom: 15px; }
+        .rn-pref-header { display: flex; flex-direction: row; align-items: center; margin-bottom: 5px; }
+        .rn-pref-subtitle { font-size: 13px; font-weight: 600; margin-left: 6px; color: var(--text-dark); }
+        .rn-pref-description { font-size: 12px; color: var(--text-light); margin-bottom: 10px; }
+
+        .rn-tag-wrapper { display: flex; flex-direction: row; flex-wrap: wrap; }
+        .rn-tag { background-color: #F0F3F4; padding: 6px 12px; border-radius: 20px; margin-right: 8px; margin-bottom: 8px; }
+        .rn-tag-bad { background-color: #FDEDEC; }
+        .rn-tag-text { color: var(--text-dark); font-size: 10px; font-weight: 600; }
+        .rn-tag-bad .rn-tag-text { color: #E74C3C; }
+
+        .rn-footer { display: flex; flex-direction: row; height: 70px; background-color: #FFFFFF; border-top: 1px solid var(--border); align-items: center; padding-bottom: 10px; justify-content: space-around; flex-shrink: 0; }
+        .rn-footer-item { display: flex; flex-direction: column; align-items: center; justify-content: center; cursor: pointer; }
+        .rn-footer-text { font-size: 9px; font-weight: 600; color: var(--text-light); margin-top: 4px; text-transform: uppercase; letter-spacing: 0.5px;}
+        .rn-footer-text-active { color: var(--primary); font-weight: 700;}
+
+    </style>
+</head>
+<body>
+
+    <div class="doc-header">
+        <h1>Instituto Federal de Educação Ciência e Tecnologia de São Paulo</h1>
+        <h2>Campus Guarulhos</h2>
+        <p>Disciplina: <strong>GRUDSMV - 2026.1</strong></p>
+        <h3>ShakeIT - Sprint 1</h3>
+    </div>
+
+    <div class="wireframes-container">
+
+        <div class="screen-wrapper">
+            <div class="screen-title">Tela 1 - Login e Autenticação (US12)</div>
+            <div class="phone">
+                <div class="notch"></div>
+                <div class="content login-screen">
+                    <div class="logo-text">SHAKEIT</div>
+                    <input type="email" class="input-field" placeholder="E-mail">
+                    <input type="password" class="input-field" placeholder="Senha">
+                    <button class="btn" style="margin-top: 10px; margin-bottom: 15px;">Entrar</button>
+                    <button class="btn btn-secondary" style="margin-top: 0; margin-bottom: 30px;">Entrar com Google</button>
+                    <p style="color:var(--primary); font-size:0.9rem; font-weight:bold;">Criar conta</p>
+                    <p style="color:var(--text-light); font-size:0.85rem;">Esqueci minha senha</p>
+                </div>
+            </div>
+        </div>
+
+        <div class="screen-wrapper">
+            <div class="screen-title">Tela 2 - Home / Dashboard</div>
+            <div class="phone">
+                <div class="notch"></div>
+                <div class="app-header">
+                    <h4 style="text-align:left;">Olá, Participante 👋</h4>
+                    <div style="width:30px; height:30px; border-radius:50%; background:var(--primary); opacity: 0.8;"></div>
+                </div>
+                <div class="content">
+                    <h3 style="margin-top:0; font-size:1.1rem; color:var(--text-dark); font-weight: 600;">Suas Parties</h3>
+                    <div class="card">
+                        <h5>Amigo Secreto IFSP</h5>
+                        <p>Sorteio Realizado • 20/12/2026</p>
+                        <button class="btn">Ver Meu Sorteado</button>
+                    </div>
+                    <div class="card">
+                        <h5>Firma 2026</h5>
+                        <p>Aguardando Sorteio • 12/15 Confirmados</p>
+                        <button class="btn btn-outline" style="margin-bottom:10px; margin-top:0;">Editar Minha Wishlist</button>
+                    </div>
+                </div>
+                <div class="bottom-nav">
+                    <div class="nav-item" style="background:var(--primary)"></div>
+                    <div class="nav-item"></div>
+                    <div class="nav-item"></div>
+                    <div class="nav-item"></div>
+                </div>
+            </div>
+        </div>
+
+        <div class="screen-wrapper">
+            <div class="screen-title">Tela 3 - Criação de Party (US 01, 02, 03)</div>
+            <div class="phone">
+                <div class="notch"></div>
+                <div class="app-header">
+                    <span style="color:var(--primary); font-size: 1.2rem;">←</span>
+                    <h4>Configurar Party</h4>
+                    <span style="width:15px;"></span>
+                </div>
+                <div class="content">
+                    <label style="font-size:0.85rem; color:var(--text-light); font-weight: 500; display:block; margin-bottom:5px;">Nome do Evento</label>
+                    <input type="text" class="input-field" placeholder="Ex: Natal da Família">
+                    
+                    <label style="font-size:0.85rem; color:var(--text-light); font-weight: 500; display:block; margin-bottom:5px;">Data da Confraternização</label>
+                    <input type="date" class="input-field">
+                    
+                    <label style="font-size:0.85rem; color:var(--text-light); font-weight: 500; display:block; margin-bottom:5px;">Valor do Presente</label>
+                    <div style="display:flex; gap:10px;">
+                        <input type="text" class="input-field" placeholder="Min (R$)">
+                        <input type="text" class="input-field" placeholder="Máx (R$)">
+                    </div>
+
+                    <button class="btn btn-outline" style="margin-top:0; margin-bottom:20px; font-weight: 500;">⚙️ Configurar Restrições</button>
+                    
+                    <button class="btn btn-secondary" style="opacity: 0.6;">REALIZAR SORTEIO</button>
+                    <p style="text-align:center; font-size:0.75rem; color:var(--text-light); margin-top:10px;">Aguarde os membros entrarem</p>
+                </div>
+            </div>
+        </div>
+
+        <div class="screen-wrapper">
+            <div class="screen-title">Tela 4 - Ingresso via QR-CODE (US 04)</div>
+            <div class="phone">
+                <div class="notch"></div>
+                <div class="content camera-view" style="padding:0;">
+                    <div style="position: absolute; top: 50px; left: 25px; color: white; font-size: 2rem; font-weight: 300;">×</div>
+                    <div class="scanner-frame"></div>
+                    <p style="z-index:2; text-align:center; padding:0 30px; font-weight: 300; letter-spacing: 0.5px;">Aponte a câmera para o QR Code da Party para ingressar.</p>
+                </div>
+            </div>
+        </div>
+
+        <div class="screen-wrapper">
+            <div class="screen-title">Tela 3.1 - Gestão da Party (Admin - US 01, 03)</div>
+            <div class="phone">
+                <div class="notch"></div>
+                <div class="app-header">
+                    <span style="color:var(--primary); font-size: 1.2rem;">←</span>
+                    <h4>Painel do Evento</h4>
+                    <span style="width:15px;"></span>
+                </div>
+                <div class="content" style="align-items: center;">
+                    <h3 style="margin:0 0 5px 0; color:var(--text-dark);">Firma 2026</h3>
+                    <p style="margin:0 0 20px 0; font-size:0.9rem; color:var(--text-light);">Código: <strong style="color:var(--text-dark);">#NATAL55</strong></p>
+                    
+                    <div style="width: 150px; height: 150px; background: white; border: 2px solid var(--border); border-radius: 12px; display: flex; align-items: center; justify-content: center; margin-bottom: 25px; font-weight: 600; color: var(--text-light); background-image: repeating-linear-gradient(45deg, #F8F9F9 25%, transparent 25%, transparent 75%, #F8F9F9 75%, #F8F9F9), repeating-linear-gradient(45deg, #F8F9F9 25%, #fff 25%, #fff 75%, #F8F9F9 75%, #F8F9F9); background-position: 0 0, 10px 10px; background-size: 20px 20px;">
+                        <div style="background: white; padding: 8px 12px; border: 1px solid var(--border); border-radius: 6px; box-shadow: 0 2px 4px rgba(0,0,0,0.02);">QR CODE</div>
+                    </div>
+
+                    <div style="width: 100%; text-align: left;">
+                        <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:15px;">
+                            <h5 style="margin:0; color:var(--text-dark);">Participantes (3/15)</h5>
+                            <span style="font-size:0.8rem; color:var(--primary); font-weight:600;">Ver todos</span>
+                        </div>
+                        <ul style="list-style: none; padding: 0; margin: 0 0 20px 0; font-size: 0.95rem; color:var(--text-dark);">
+                            <li style="padding: 10px 0; border-bottom: 1px solid var(--border); display:flex; justify-content:space-between;">Duda (Você) <span>🔒</span></li>
+                            <li style="padding: 10px 0; border-bottom: 1px solid var(--border); display:flex; justify-content:space-between;">Rodrigo <span>🔒</span></li>
+                            <li style="padding: 10px 0; border-bottom: 1px solid var(--border); display:flex; justify-content:space-between;">Ana Julia <span style="opacity:0.6; font-size: 0.85rem;">🔓 Pendente</span></li>
+                        </ul>
+                    </div>
+
+                    <button class="btn" style="background:var(--border); color:var(--text-light); cursor:not-allowed;" title="Aguardando todos bloquearem perfil">REALIZAR SORTEIO</button>
+                </div>
+            </div>
+        </div>
+
+        <div class="screen-wrapper">
+            <div class="screen-title">Tela 3.2 - Restrições de Sorteio (US 02)</div>
+            <div class="phone">
+                <div class="notch"></div>
+                <div class="app-header">
+                    <span style="color:var(--primary); font-size: 1.2rem;">←</span>
+                    <h4>Regras de Sorteio</h4>
+                    <span style="width:15px;"></span>
+                </div>
+                <div class="content">
+                    <p style="font-size:0.85rem; color:var(--text-light); margin-top:0; line-height: 1.4;">Evite que pessoas específicas se tirem no sorteio (ex: casais).</p>
+                    
+                    <div class="card" style="background: var(--bg-color); border: 1px solid var(--border); box-shadow: none;">
+                        <select class="input-field" style="margin-bottom: 10px; background: var(--input-bg); border:none;">
+                            <option>Selecione a Pessoa A</option>
+                            <option>Nathalie</option>
+                        </select>
+                        <div style="text-align: center; font-size: 0.8rem; margin-bottom: 10px; color: var(--text-light); font-weight: 600;">NÃO PODE TIRAR ↓</div>
+                        <select class="input-field" style="margin-bottom: 15px; background: var(--input-bg); border:none;">
+                            <option>Selecione a Pessoa B</option>
+                            <option>Rodrigo</option>
+                        </select>
+                        <button class="btn btn-outline" style="padding: 10px; font-size: 0.9rem; font-weight: 500;">+ Adicionar Regra</button>
+                    </div>
+
+                    <h5 style="margin: 15px 0 10px 0; color: var(--text-dark);">Regras Ativas</h5>
+                    <div class="card" style="padding: 12px 15px; display: flex; justify-content: space-between; align-items: center; border: 1px solid var(--border); background: var(--input-bg);">
+                        <span style="font-size:0.9rem; color: var(--text-dark); font-weight: 500;">Nathalie <span style="opacity:0.5; margin:0 5px;">→</span> Feitoza</span>
+                        <span style="color:#E74C3C; font-weight:bold; cursor:pointer; font-size: 0.8rem;">✕</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="screen-wrapper">
+            <div class="screen-title">Tela 4.1 - Sala de Espera (US 09, 10)</div>
+            <div class="phone">
+                <div class="notch"></div>
+                <div class="app-header">
+                    <span style="color:var(--primary); font-size: 1.2rem;">←</span>
+                    <h4>Entrar na Party</h4>
+                    <span style="width:15px;"></span>
+                </div>
+                <div class="content">
+                    <div style="text-align:center; margin-bottom: 25px; padding-bottom: 20px; border-bottom: 1px solid var(--border);">
+                        <h2 style="margin:0; color:var(--text-dark); font-weight: 700;">Firma 2026</h2>
+                        <p style="margin:8px 0 0 0; color:var(--text-light); font-size:0.9rem;">Revelação: 20/12/2026</p>
+                        <p style="margin:2px 0 0 0; color:var(--text-light); font-size:0.9rem;">Valor: R$ 50 a R$ 100</p>
+                    </div>
+
+                    <div style="margin-bottom: 20px;">
+                        <h5 style="margin:0 0 15px 0; color:var(--text-dark);">Sua Lista de Desejos</h5>
+                        <label style="display:flex; gap:12px; align-items:center; font-size:0.9rem; margin-bottom:12px; color: var(--text-dark);">
+                            <input type="radio" name="wishlist" checked style="accent-color: var(--primary);"> Usar meu Perfil Global
+                        </label>
+                        <label style="display:flex; gap:12px; align-items:center; font-size:0.9rem; margin-bottom:15px; color: var(--text-dark);">
+                            <input type="radio" name="wishlist" style="accent-color: var(--primary);"> Criar lista p/ este evento
+                        </label>
+                        <textarea class="input-field" placeholder="Escreva aqui suas preferências específicas..." rows="3" style="display:none;"></textarea>
+                    </div>
+
+                    <div style="margin-top:auto; text-align:center;">
+                        <p style="font-size:0.85rem; color:var(--text-light); margin-bottom:12px;">Confirme seus dados para liberar o sorteio.</p>
+                        <button class="btn" style="background:#2ECC71; box-shadow: 0 4px 10px rgba(46, 204, 113, 0.2);">🔒 ESTOU PRONTO (LOCK)</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="screen-wrapper">
+            <div class="screen-title">Tela 5 - Meu Perfil e Dependentes (US 07, 08)</div>
+            <div class="phone">
+                <div class="notch"></div>
+                <div class="app-header">
+                    <h4>Meu Perfil Global</h4>
+                </div>
+                <div class="content">
+                    <div class="profile-pic">
+                        <ion-icon name="person-outline"></ion-icon>
+                    </div>
+                    <h3 style="text-align:center; margin:0 0 25px 0; color:var(--text-dark);">Nome do Usuário</h3>
+                    
+                    <div class="card">
+                        <h5 style="margin-bottom:5px;">Meus Tamanhos</h5>
+                        <div style="display:flex; gap:10px; margin-top:10px;">
+                            <input type="text" class="input-field" placeholder="Camiseta" style="margin:0; background: var(--bg-color);">
+                            <input type="text" class="input-field" placeholder="Calçado" style="margin:0; background: var(--bg-color);">
+                        </div>
+                    </div>
+
+                    <div class="card">
+                        <h5>Contas Dependentes</h5>
+                        <p>Gerencie perfis para crianças ou idosos.</p>
+                        <button class="btn btn-outline" style="padding:10px 0; font-weight: 500;">+ Adicionar Dependente</button>
+                    </div>
+                </div>
+                <div class="bottom-nav">
+                    <div class="nav-item"></div>
+                    <div class="nav-item"></div>
+                    <div class="nav-item" style="background:var(--primary); opacity: 0.8;"></div>
+                    <div class="nav-item"></div>
+                </div>
+            </div>
+        </div>
+
+        <div class="screen-wrapper">
+            <div class="screen-title">Tela 5.1 - Editar Preferências (US 07)</div>
+            <div class="phone">
+                <div class="notch"></div>
+                <div class="app-header">
+                    <span style="color:var(--primary); font-size: 1.2rem;">←</span>
+                    <h4>Editar Perfil</h4>
+                    <span style="width:15px;"></span>
+                </div>
+                <div class="content">
+                    <p style="font-size:0.85rem; color:var(--text-light); margin-top:0; margin-bottom: 20px; line-height: 1.4;">Adicione as tags de preferências que ficarão visíveis para o seu amigo secreto.</p>
+
+                    <div class="card" style="padding: 15px;">
+                        <div style="display: flex; align-items: center; margin-bottom: 12px;">
+                            <ion-icon name="heart" style="font-size: 18px; color: #E74C3C;"></ion-icon>
+                            <h5 style="margin: 0 0 0 8px; color: var(--text-dark);">O que eu amo</h5>
+                        </div>
+                        <div style="display:flex; gap:10px; margin-bottom: 10px;">
+                            <input type="text" class="input-field" placeholder="Ex: Livros, Games..." style="margin:0; padding: 10px;">
+                            <button class="btn" style="width: auto; padding: 10px 15px; margin: 0; font-size: 1.2rem;">+</button>
+                        </div>
+                        <div class="rn-tag-wrapper">
+                            <div class="rn-tag"><span class="rn-tag-text">Mobile Dev</span></div>
+                            <div class="rn-tag"><span class="rn-tag-text">Camisa do Vasco</span></div>
+                            <div class="rn-tag"><span class="rn-tag-text">Acessórios IoT</span></div>
+                        </div>
+                    </div>
+
+                    <div class="card" style="padding: 15px;">
+                        <div style="display: flex; align-items: center; margin-bottom: 12px;">
+                            <ion-icon name="heart-dislike" style="font-size: 18px; color: var(--text-light);"></ion-icon>
+                            <h5 style="margin: 0 0 0 8px; color: var(--text-dark);">Melhor evitar</h5>
+                        </div>
+                        <div style="display:flex; gap:10px; margin-bottom: 10px;">
+                            <input type="text" class="input-field" placeholder="Ex: Roupas claras..." style="margin:0; padding: 10px;">
+                            <button class="btn btn-secondary" style="width: auto; padding: 10px 15px; margin: 0; font-size: 1.2rem;">+</button>
+                        </div>
+                        <div class="rn-tag-wrapper">
+                            <div class="rn-tag rn-tag-bad"><span class="rn-tag-text">Chocolates com licor</span></div>
+                        </div>
+                    </div>
+
+                    <button class="btn" style="margin-top:auto; box-shadow: 0 4px 10px rgba(74, 144, 226, 0.2);">SALVAR PERFIL</button>
+                </div>
+            </div>
+        </div>
+
+        <div class="screen-wrapper">
+            <div class="screen-title">Tela 6 - A Revelação "Shake" (US 05)</div>
+            <div class="phone">
+                <div class="notch"></div>
+                <div class="content shake-screen">
+                    <div class="gift-box">
+                        <ion-icon name="gift-outline" style="color: white; font-size: 2.5rem;"></ion-icon>
+                    </div>
+                    <h2 style="margin:0 0 10px 0; font-weight: 600; letter-spacing: 0.5px;">O Sorteio foi feito!</h2>
+                    <p style="opacity:0.9; margin:0 30px; font-size:0.95rem; font-weight: 300; line-height: 1.4;">
+                        Chacoalhe o seu celular para descobrir quem você tirou.
+                    </p>
+                </div>
+            </div>
+        </div>
+
+        <div class="screen-wrapper">
+            <div class="screen-title">Tela 7 - Perfil do Sorteado (US 06)</div>
+            <div class="phone" style="padding: 0; background-color: #FFFFFF;">
+                <div class="notch"></div>
+                
+                <div class="rn-container">
+                    
+                    <div class="rn-logo-container">
+                        <div class="rn-logo-text">SHAKE<span class="rn-logo-highlight">IT</span></div>
+                    </div>
+
+                    <div class="rn-header">
+                        <div class="rn-avatar-circle">
+                            <ion-icon name="person" style="font-size: 28px; color: var(--text-light);"></ion-icon>
+                        </div>
+                        <div class="rn-name-container">
+                            <h2 class="rn-profile-name">Rodrigo Quadrante</h2>
+                            <p class="rn-profile-role">Perfil do Participante</p>
+                        </div>
+                    </div>
+
+                    <div class="rn-body">
+                        <div class="rn-card">
+                            <div class="rn-card-title">Minhas Medidas</div>
+                            <div class="rn-measurements-grid">
+                                <div class="rn-measure-item">
+                                    <ion-icon name="shirt-outline" style="font-size: 20px; color: var(--primary);"></ion-icon>
+                                    <div class="rn-measure-label">Tam: M</div>
+                                </div>
+                                <div class="rn-measure-item">
+                                    <ion-icon name="reorder-four-outline" style="font-size: 20px; color: var(--primary);"></ion-icon>
+                                    <div class="rn-measure-label">Calça: 40</div>
+                                </div>
+                                <div class="rn-measure-item">
+                                    <ion-icon name="footsteps-outline" style="font-size: 20px; color: var(--primary);"></ion-icon>
+                                    <div class="rn-measure-label">Tênis: 39</div>
+                                </div>
+                                <div class="rn-measure-item">
+                                    <ion-icon name="sparkles-outline" style="font-size: 20px; color: var(--primary);"></ion-icon>
+                                    <div class="rn-measure-label">Anel: 18</div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="rn-card">
+                            <div class="rn-card-title">Minhas Preferências</div>
+                            
+                            <div class="rn-pref-section">
+                                <div class="rn-pref-header">
+                                    <ion-icon name="heart" style="font-size: 16px; color: #E74C3C;"></ion-icon>
+                                    <div class="rn-pref-subtitle">Coisas que eu amo:</div>
+                                </div>
+                                <div class="rn-pref-description">Itens de setup, tecnologia e café especial.</div>
+                                <div class="rn-tag-wrapper">
+                                    <div class="rn-tag"><span class="rn-tag-text">Games</span></div>
+                                    <div class="rn-tag"><span class="rn-tag-text">Café</span></div>
+                                    <div class="rn-tag"><span class="rn-tag-text">Livros</span></div>
+                                </div>
+                            </div>
+
+                            <div class="rn-pref-section" style="margin-bottom: 0;">
+                                <div class="rn-pref-header">
+                                    <ion-icon name="heart-dislike" style="font-size: 16px; color: var(--text-light);"></ion-icon>
+                                    <div class="rn-pref-subtitle">Melhor evitar:</div>
+                                </div>
+                                <div class="rn-pref-description">Doces amargos e itens na cor amarela.</div>
+                                <div class="rn-tag-wrapper">
+                                    <div class="rn-tag rn-tag-bad"><span class="rn-tag-text">Amarelo</span></div>
+                                    <div class="rn-tag rn-tag-bad"><span class="rn-tag-text">Chocolate 70%</span></div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="rn-footer">
+                        <div class="rn-footer-item">
+                            <ion-icon name="home-outline" style="font-size: 22px; color: var(--text-light);"></ion-icon>
+                            <div class="rn-footer-text">Início</div>
+                        </div>
+                        <div class="rn-footer-item">
+                            <ion-icon name="qr-code-outline" style="font-size: 22px; color: var(--primary);"></ion-icon>
+                            <div class="rn-footer-text rn-footer-text-active">Scan</div>
+                        </div>
+                        <div class="rn-footer-item">
+                            <ion-icon name="gift-outline" style="font-size: 22px; color: var(--text-light);"></ion-icon>
+                            <div class="rn-footer-text">Parties</div>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+
+        <div class="screen-wrapper">
+            <div class="screen-title">Tela 8 - Mural de Memórias (US 11)</div>
+            <div class="phone">
+                <div class="notch"></div>
+                <div class="app-header">
+                    <span style="color:var(--primary); font-size: 1.2rem;">←</span>
+                    <h4 style="font-size:1rem;">Mural: Natal 2026</h4>
+                    <span style="width:15px;"></span>
+                </div>
+                <div class="content" style="position:relative;">
+                    <p style="margin:0 0 15px 0; font-size:0.9rem; color:var(--text-light); font-weight: 500;">Fotos da Confraternização</p>
+                    
+                    <div class="photo-grid">
+                        <div class="photo-item"></div>
+                        <div class="photo-item"></div>
+                        <div class="photo-item"></div>
+                        <div class="photo-item"></div>
+                        <div class="photo-item"></div>
+                        <div class="photo-item" style="background:transparent; border: 1.5px dashed var(--text-light); display: flex; align-items: center; justify-content: center;">
+                            <ion-icon name="image-outline" style="color: var(--text-light); font-size: 1.5rem;"></ion-icon>
+                        </div>
+                    </div>
+                    
+                </div>
+                <div class="fab">
+                    <ion-icon name="add-outline"></ion-icon>
+                </div>
+                <div class="bottom-nav">
+                    <div class="nav-item"></div>
+                    <div class="nav-item" style="background:var(--primary); opacity: 0.8;"></div>
+                    <div class="nav-item"></div>
+                    <div class="nav-item"></div>
+                </div>
+            </div>
+        </div>
+
+    </div>
+</body>
+</html>
